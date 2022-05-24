@@ -17,14 +17,9 @@ constituents_data <- read_rds(here("data",
                                    "datos_constituyentes_clean.rds"))
 
 all_the_tweets_raw <- 
-  get_bucket_df("fyac-backend-data-constituyentes") %>% 
+  get_bucket_df("fyac-backend-data-constituyentes", max = Inf) %>% 
   pull(Key) %>% 
   map_df(s3readRDS, bucket = "fyac-backend-data-constituyentes")
-
-# all_the_tweets_raw <-
-#   list.files(here("data", "retrieved_tweets"),
-#              full.names = TRUE) %>%
-#   map_df(read_rds)
 
 all_the_tweets <- all_the_tweets_raw %>%
   mutate(screen_name_lower = str_to_lower(screen_name),
