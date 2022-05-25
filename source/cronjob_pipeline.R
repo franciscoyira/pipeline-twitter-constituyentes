@@ -1,0 +1,7 @@
+message(Sys.time())
+library(here)
+message("EXECUTING retrieve_tweets.R")
+source(here("source", "retrieve_tweets.R"))
+message("EXECUTING process_tweets.R")
+source(here("source", "process_tweets.R"))
+message("EXECUTION FINISHED")
